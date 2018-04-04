@@ -102,7 +102,7 @@ public class MainActivity extends Activity implements GPSCallback {
         } else {
             gpsManager.showSettingsAlert();
         }
-        if (kmphSpeed==0.0){
+        if (kmphSpeed>=0.0 && kmphSpeed<=2.0){
             startTime = SystemClock.uptimeMillis();
             myHandler.postDelayed(updateTimerMethod, 0);
         }
@@ -148,7 +148,7 @@ public class MainActivity extends Activity implements GPSCallback {
             int minutes = seconds / 60;
             seconds = seconds % 60;
             int milliseconds = (int) (finalTime % 1000);
-            textTimer.setText(String.format("%d:%s:%s", minutes, String.format("%02d", seconds), String.format("%03d", milliseconds)));
+            textTimer.setText(String.format("%d:%s", minutes, String.format("%02d", seconds)));
             myHandler.postDelayed(this, 0);
         }
     };
